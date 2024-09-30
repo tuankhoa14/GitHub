@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải Phương Trình Bậc Nhất</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Giải Phương Trình Bậc Nhất</h1>
+    <p>Phương trình có dạng: <strong>ax + b = 0</strong></p>
+
+    <div>
+        <label for="a">Nhập hệ số a:</label>
+        <input type="number" id="a" placeholder="Nhập giá trị a">
+    </div>
+
+    <div>
+        <label for="b">Nhập hệ số b:</label>
+        <input type="number" id="b" placeholder="Nhập giá trị b">
+    </div>
+
+    <button onclick="giaiPhuongTrinh()">Giải Phương Trình</button>
+
+    <div id="result"></div>
+
+    <script>
+        function giaiPhuongTrinh() {
+            // Lấy giá trị của a và b từ các input
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+            var result = '';
+
+            // Kiểm tra điều kiện của phương trình
+            if (isNaN(a) || isNaN(b)) {
+                result = 'Vui lòng nhập cả a và b!';
+            } else if (a === 0) {
+                if (b === 0) {
+                    result = 'Phương trình có vô số nghiệm!';
+                } else {
+                    result = 'Phương trình vô nghiệm!';
+                }
+            } else {
+                // Tính nghiệm x
+                var x = -b / a;
+                result = 'Phương trình có nghiệm x = ' + x.toFixed(2);
+            }
+
+            // Hiển thị kết quả
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+
+</body>
+</html>
